@@ -1,7 +1,9 @@
 const {Sequelize, DataTypes}= require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const students = sequelize.define(
+const Campus = require('./campus.js')
+
+const Student = sequelize.define(
     'students',
     {
         firstName:{
@@ -49,14 +51,13 @@ const students = sequelize.define(
     }
 );
 
-module.exports = students;
+module.exports = Student;
 
-students.sync().then(() => {
-  console.log("Students table works!");
-});
+Student.belongsTo(Campus);
+Campus.hasMany(Student);
+
 sequelize.sync({ force: true }).then(() => {
   console.log("Sequelize table operational");
 });
-students.belongsTo(campus);
-campus.hasMany(students);
+
 
