@@ -1,9 +1,8 @@
 const {Sequelize, DataTypes}= require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
 
-const students = require('./student.js');
+const {db} = require('../database');
 
-const campus = sequelize.define(
+const campus = db.define(
     'campus',
     {
         name:{
@@ -35,8 +34,7 @@ const campus = sequelize.define(
     }
 );
 
-campus.hasMany(students);
-students.belongsTo(campus);
+
 
 campus.sync().then(() => {
   console.log("Campus tables synced!✅");
