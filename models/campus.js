@@ -34,8 +34,6 @@ const campus = db.define(
     }
 );
 
-
-
 campus.sync().then(() => {
   console.log("Campus tables synced!✅");
 });
