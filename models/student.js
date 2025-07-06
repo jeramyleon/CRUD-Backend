@@ -46,5 +46,8 @@ const Student = db.define("students", {
     },
   },
 });
+Student.sync().then(() => {
+  console.log("Student tables synced!✅");
+});
 
 module.exports = Student;
