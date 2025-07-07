@@ -1,11 +1,11 @@
 const { db } = require("../database");
-const Campus = require("./campus");
+const campus = require("./campus");
 const Student = require("./student");
-Campus.hasMany(Student);
-Student.belongsTo(Campus);
+campus.hasMany(Student);
+Student.belongsTo(campus);
 
 module.exports = {
   db,
   Student,
-  Campus,
+  campus,
 };
